@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductPagination() {
   const [pageNumber, setpageNumber] = React.useState(1);
   const handleChange = (event, value) => {
-    console.log(value, "bullshit");
+    console.log(value, "page number");
     setpageNumber(value);
   };
 
