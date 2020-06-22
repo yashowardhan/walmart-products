@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail";
+import ProductEditForm from "./components/ProductEditForm";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
               <Route
                 path="/products/detail/:productId"
                 component={ProductDetail}
+              ></Route>
+              <Route
+                path="/products/edit/:productId"
+                component={ProductEditForm}
               ></Route>
             </Switch>
           </div>
