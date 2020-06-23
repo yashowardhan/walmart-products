@@ -1,4 +1,5 @@
 import products from "./api/products";
+import axios from "axios";
 
 export const fetchProducts = (pageNumber) => async (dispatch) => {
   //const { pageNumber } = 1;
@@ -19,4 +20,24 @@ export const fetchProduct = (productId) => async (dispatch) => {
     type: "FETCH_PRODUCT_DETAIL",
     payload: response.data,
   });
+};
+
+export const sortProducts = () => {
+  return (dispatch) => {
+    axios
+      .get(
+        "https://mobile-tha-server-8ba57.firebaseapp.com/walmartproducts/1/10?minPrice=500&maxPrice=1000&inStock=true&minReviewCount=2"
+      )
+      .then((response) => {
+        const users = response.data.products;
+        console.log(users, "api call data");
+        dispatch({
+          type: "SORT_PRODUCTS",
+          payload: response.data.products,
+        });
+      })
+      .catch((error) => {
+        dispatch(error.message);
+      });
+  };
 };
